@@ -18,7 +18,7 @@ import ufms.cpcx.jose.listagem.model.Lanche;
 /**
  * Created by jose on 25/06/16.
  */
-public class LancheAdapter extends BaseAdapter{
+public class LancheAdapter extends BaseAdapter {
     private LayoutInflater layoutInflater;
     private List<Lanche> lanches;
 
@@ -51,7 +51,8 @@ public class LancheAdapter extends BaseAdapter{
         if (view != null) {
             holder = (ViewHolder) view.getTag();
         } else {
-            view = layoutInflater.inflate(R.layout.item_lanche, viewGroup, false);
+            view = layoutInflater.inflate(R.layout.item_lanche,
+                    viewGroup, false);
             holder = new ViewHolder(view);
             view.setTag(holder);
         }
@@ -60,9 +61,9 @@ public class LancheAdapter extends BaseAdapter{
         holder.tvNome.setText(l.getNome());
 
 
-        holder.tvValor.setText("R$: "+l.getValor());
+        holder.tvValor.setText("R$: " + l.getValor());
 
-        if(l.getValor()<10){
+        if (l.getValor() < 10) {
             holder.tvValor.setTextColor(
                     ContextCompat.getColor(view.getContext(),
                             R.color.colorText)
