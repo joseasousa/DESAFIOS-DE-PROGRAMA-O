@@ -1,5 +1,6 @@
 package ufms.cpcx.jose.listagem.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -10,6 +11,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnItemClick;
 import ufms.cpcx.jose.listagem.R;
 import ufms.cpcx.jose.listagem.adapter.LancheAdapter;
 import ufms.cpcx.jose.listagem.model.Lanche;
@@ -53,5 +55,16 @@ public class MainActivity extends AppCompatActivity {
         return  l ;
     }
 
+    @OnItemClick(R.id.listLanches)
+    public void lista(int i){
+        Intent iteIntent = new Intent(getBaseContext(),Tela2.class);
+        Bundle bundle = new Bundle();
+
+        bundle.putSerializable("lanche",lanches.get(i));
+
+        iteIntent.putExtras(bundle);
+
+        startActivity(iteIntent);
+    }
 
 }
