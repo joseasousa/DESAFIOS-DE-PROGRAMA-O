@@ -6,7 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.ListView;
 
-import java.util.ArrayList;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -37,34 +38,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         LancheAdapter adapter =
                 new LancheAdapter(lanches , getBaseContext());
-
         listView.setAdapter(adapter);
     }
 
     private List<Lanche> getLanches(){
-        List<Lanche> l = new ArrayList<Lanche>();
-        for(int i =0; i<10;i++){
-            Lanche lan = new Lanche();
+        List<Lanche> l = SQLite.select()
+                .from(Lanche.class).queryList();
 
-            lan.setId(i);
-            lan.setNome("X-Lanche"+i);
-            lan.setValor(Math.random()*15+1);
-
-            l.add(lan);
-        }
         return  l ;
     }
 
     @OnItemClick(R.id.listLanches)
-    public void lista(int i){
-        Intent iteIntent = new Intent(getBaseContext(),Tela2.class);
+    public void onitem(int i){
+        Intent intent = new Intent(getBaseContext(),Tela2.class);
         Bundle bundle = new Bundle();
-
         bundle.putSerializable("lanche",lanches.get(i));
-
-        iteIntent.putExtras(bundle);
-
-        startActivity(iteIntent);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
-
 }

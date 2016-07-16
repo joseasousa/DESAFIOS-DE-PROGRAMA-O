@@ -11,15 +11,15 @@ import ufms.cpcx.jose.listagem.R;
 import ufms.cpcx.jose.listagem.model.Lanche;
 
 public class Tela2 extends AppCompatActivity {
+
     @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    Toolbar toolbar ;
 
     @BindView(R.id.tvNome)
     TextView tvNome;
 
     @BindView(R.id.tvValor)
     TextView tvValor;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +29,14 @@ public class Tela2 extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
 
-        Lanche l =(Lanche) getIntent().getExtras().get("lanche");
-        if(l!=null){
-            tvNome.setText(l.getNome());
-            tvValor.setText(String.format("%.2f",l.getValor()));
-        }
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        Lanche l =(Lanche) getIntent().getSerializableExtra("lanche");
+
+        if(l!= null){
+            tvNome.setText(l.getNome());
+            tvValor.setText(String.format("VAlor: R$ %.2f",l.getValor()));
+        }
     }
 
 }
