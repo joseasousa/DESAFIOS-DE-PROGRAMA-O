@@ -12,4 +12,3 @@ public class DbUtils {
 
     public static final int VERSION = 1;
 }
-

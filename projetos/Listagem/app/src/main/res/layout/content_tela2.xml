@@ -12,19 +12,19 @@
     tools:context="ufms.cpcx.jose.listagem.view.Tela2"
     tools:showIn="@layout/activity_tela2">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:hint="Nome"
         android:id="@+id/tvNome"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="41dp" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <EditText
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Text"
+        android:hint="Valor"
         android:id="@+id/tvValor"
         android:layout_below="@+id/tvNome"
         android:layout_centerHorizontal="true"
