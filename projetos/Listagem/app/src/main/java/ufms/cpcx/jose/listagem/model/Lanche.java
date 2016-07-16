@@ -1,22 +1,35 @@
 package ufms.cpcx.jose.listagem.model;
 
+import com.raizlabs.android.dbflow.annotation.Column;
+import com.raizlabs.android.dbflow.annotation.PrimaryKey;
+import com.raizlabs.android.dbflow.annotation.Table;
+import com.raizlabs.android.dbflow.structure.BaseModel;
+
 import java.io.Serializable;
+
+import ufms.cpcx.jose.listagem.utils.DbUtils;
 
 /**
  * Created by jose on 25/06/16.
  */
-public class Lanche implements Serializable {
-    private int id;
+@Table(database = DbUtils.class)
+public class Lanche extends BaseModel
+        implements Serializable {
 
+    @PrimaryKey(autoincrement = true)
+    private long id;
+
+    @Column
     private String nome;
 
+    @Column
     private double valor;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
