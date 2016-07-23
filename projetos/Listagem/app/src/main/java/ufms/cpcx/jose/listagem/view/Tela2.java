@@ -1,6 +1,7 @@
 package ufms.cpcx.jose.listagem.view;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -23,7 +24,11 @@ public class Tela2 extends AppCompatActivity {
     @BindView(R.id.tvValor)
     EditText tvValor;
 
+    @BindView(R.id.fabDel)
+    FloatingActionButton fbDel;
+
     private boolean update= false;
+    Lanche l;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +40,13 @@ public class Tela2 extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        Lanche l =(Lanche) getIntent().getSerializableExtra("lanche");
+         l =(Lanche) getIntent().getSerializableExtra("lanche");
 
         update=false;
 
         if(l!= null){
             update=true;
+            fbDel.setVisibility(View.VISIBLE);
             tvNome.setText(l.getNome());
             tvValor.setText(String.valueOf(l.getValor()));
         }
@@ -49,18 +55,27 @@ public class Tela2 extends AppCompatActivity {
     @OnClick(R.id.fabSave)
     public void btSave(View view){
 
-        Lanche l = new Lanche();
-        l.setNome(tvNome.getText().toString());
-
-        l.setValor(Double.parseDouble(
-                tvValor.getText().toString()));
-
         if(update){
+            l.setNome(tvNome.getText().toString());
+
+            l.setValor(Double.parseDouble(
+                    tvValor.getText().toString()));
             l.update();
         }else {
+            l = new Lanche();
+            l.setNome(tvNome.getText().toString());
+
+            l.setValor(Double.parseDouble(
+                    tvValor.getText().toString()));
             l.save();
         }
 
+        finish();
+    }
+
+    @OnClick(R.id.fabDel)
+    void Delete(View v){
+        l.delete();
         finish();
     }
 

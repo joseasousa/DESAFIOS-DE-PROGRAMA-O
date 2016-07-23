@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @OnItemClick(R.id.listLanches)
-    public void onitem(int i){
+    public void onItem(int i){
         Intent intent = new Intent(getBaseContext(),Tela2.class);
         Bundle bundle = new Bundle();
         bundle.putSerializable("lanche",lanches.get(i));
